@@ -1,0 +1,19 @@
+{
+  "overview": "A personal website built with React and Vite, featuring a responsive UI, admin content management, blog posts, web links, and profile customization. Deployed on the Internet Computer with Vercel compatibility.",
+  "features": [
+    "Responsive personal website with clean layout",
+    "Admin dashboard for managing blog posts and links",
+    "Profile customization with heading and background options",
+    "Visit counter and user profile setup",
+    "Production-ready build with Vercel deployment config"
+  ],
+  "category": "personal",
+  "tags": [
+    "personal-website",
+    "react",
+    "vite",
+    "tailwind",
+    "responsive"
+  ],
+  "last_updated": "2026-05-15T18:12:25.522Z"
+}

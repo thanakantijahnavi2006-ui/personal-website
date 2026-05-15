@@ -6,9 +6,10 @@ import Principal "mo:core/Principal";
 import OrderedMap "mo:base/OrderedMap";
 import OrderedSet "mo:base/OrderedSet";
 import ListBase "mo:base/List";
+import Nat "mo:core/Nat";
 
 module {
-  public func migrateOrderedMap<K, V>(old : OrderedMap.Map<K, V>, compare : (implicit : (K, K) -> Order.Order)) : Map.Map<K, V> {
+  public func migrateOrderedMap<K, V>(old : OrderedMap.Map<K, V>, compare : (K, K) -> Order.Order) : Map.Map<K, V> {
     let ops = OrderedMap.Make(compare);
     let new = Map.empty<K, V>();
     for ((k, v) in ops.entries(old)) {
@@ -17,7 +18,7 @@ module {
     new;
   };
 
-  public func migrateOrderedSet<T>(old : OrderedSet.Set<T>, compare : (implicit : (T, T) -> Order.Order)) : Set.Set<T> {
+  public func migrateOrderedSet<T>(old : OrderedSet.Set<T>, compare : (T, T) -> Order.Order) : Set.Set<T> {
     let ops = OrderedSet.Make(compare);
     let new = Set.empty<T>();
     for (k in ops.vals(old)) {
@@ -54,7 +55,7 @@ module {
   public func migrateAccessControlState(old : OldAccessControlState) : NewAccessControlState {
     let new = {
       var adminAssigned = old.adminAssigned;
-      userRoles = migrateOrderedMap<Principal, UserRole>(old.userRoles);
+      userRoles = migrateOrderedMap<Principal, UserRole>(old.userRoles, Principal.compare);
     };
     new;
   };

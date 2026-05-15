@@ -5,3 +5,12 @@ dist/
 .platform/
 .pnpm-store/
 .cache/
+.env
+.env.local
+.DS_Store
+*.log
+.vscode/
+.idea/
+.dfx/
+canister_ids.json
+pnpm-lock.yaml
